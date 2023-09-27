@@ -1,0 +1,54 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <div class="esquerda">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span></div>
+  <a href="http://127.0.0.1:8000/tags/" class="tag-list-btn"></a>
+</div>
+
+<main class="container">
+  <form class="form-card" method="post">
+    {% csrf_token %}
+    <label for="titulo"></label>
+    <input class="form-card-title" id="titulo" type="text" name="titulo" placeholder="Título" />
+    <label for="detalhes"></label>
+    <textarea id="detalhes" name="detalhes" class="autoresize" placeholder="Digite o conteúdo..."></textarea>
+    <label for="tag_name"></label>
+    <textarea id="tag_name" name="tag_name" placeholder="Nome da Tag" class="autoresize"></textarea>
+    <ul id="tag-suggestions"></ul>    
+    <button class="btn" type="submit">Criar</button>
+  </form>
+
+  <ul class="card-container">
+    {% for note in notes %}
+    <li class="card">
+      <div class="row">
+        <h3 class="card-title">{{ note.title }}</h3>
+        <div class="row">
+          <a href="{% url 'edit_note' note.id %}" class="edit-btn"></a>
+          <form method="post" action="{% url 'delete_note' note.id %}">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn"></button>
+          </form>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="cor">{{ note.content }}</p>
+        {% if note.tag %}
+        <p class="tag-highlight" style="background-color: {{ note.tag.color }};">
+          {% if note.tag and note.tag.name %}
+          <a href="{% url 'tag_detail' note.tag.name %}" class="plain-link" style="color: black; text-decoration: none;">{{ note.tag.name }}</a>
+          {% endif %}
+              </p>
+        {% endif %}
+    </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <script type="text/javascript" src="/static/notes/script/getit.js"></script>
+  <script type="text/javascript" src="/static/notes/script/script2.js"></script>
+</main>
+{% endblock %}

@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get-it</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/notes/css/getit.css" />
+  </head>
+<body>
+  <div class="appbar">
+    <div class="esquerda">
+    <a href="/">
+    <img src="/static/notes/img/logo-getit.png" class="logo" /></a>
+    <span class="subtitle">Como o Post-it, mas com outro verbo</span></div>
+  </div>
+    <main class="container">
+      <form class="form-card" method="post">
+        {% csrf_token %}
+        <label for="title"></label>
+        <input
+          id="title"
+          class="form-card-title"
+          type="text"
+          name="title"
+          placeholder="Título"
+          value="{{ note.title }}"
+        />
+        <label for="content"></label>
+        <textarea id="content" name="content" placeholder="Digite o conteúdo..." class="autoresize" required>{{ note.content }}</textarea>
+        <input type="submit" class="btn" value="Salvar" />
+        <a href="/" class="btn2">Cancelar</a>
+        <input type="hidden" name="index" value="{index}" /> <!-- Include hidden index field -->
+      </form>
+    </form>
+
+      <script type="text/javascript">
+        // Obtém os elementos de input e textarea
+        const tituloInput = document.getElementById('titulo');
+        const detalhesTextarea = document.getElementById('detalhes');
+        
+        // Valores que você quer preencher
+        const titulo = {titulo};
+        const conteudo = {conteudo};
+        
+        // Preenche os elementos com os valores
+        tituloInput.value = titulo;
+        detalhesTextarea.textContent = conteudo;
+      </script>
+
+    </main>
+</body>
+</html>

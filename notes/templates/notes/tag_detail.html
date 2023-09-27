@@ -1,0 +1,32 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <div class="esquerda">
+    <a href="/">
+    <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
+    </a>
+    <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+  </div>
+</div>
+
+<main class="container">
+  <h2 class="tag-heading">Detalhes da Tag: {{ tag.name }}</h2>
+
+  <ul class="card-container">
+    {% for note in notes %}
+    <li class="card" style="background-color: {{ note.tag.color }};">
+      <h3 class="card-title">{{ note.title }}</h3>
+      <div class="card-content">
+        <p class="cor">{{ note.content }}</p>
+      </div>
+    </li>
+    {% empty %}
+      <p class="no-notes">Nenhuma anotação associada a esta tag.</p>
+    {% endfor %}
+  </ul>
+  <a href="/" class="btn3">Voltar</a>
+  <script type="text/javascript" src="/static/notes/script/getit.js"></script>
+</main>
+{% endblock %}

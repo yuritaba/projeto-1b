@@ -1,0 +1,439 @@
+/*
+Algumas informações úteis e dicas:
+  - Fontes disponíveis:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Permanent Marker', cursive;
+  - Cores:
+    Tons de amarelo:
+      #e4fc2b
+      #e0d426
+      #f7d736
+      #e0af26
+      #fcb02b
+    Tons de cinza:
+      #2c2c2c
+      #4c4c4c
+    Cores dos cards:
+      #ead3a7
+      #9de0f5
+      #ef89ba
+      #fae890
+      #abe9c1
+  - Sombra: https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+ html,
+
+ body {
+   font-family: "Roboto", sans-serif;
+   transition: background-color 0.3s;
+ }
+ 
+ .container {
+   display: flex;
+   flex-direction: column;
+   justify-content: left;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+ }
+ 
+ .form-card {
+   display: flex;
+   flex-direction: column; 
+   width: 33%;
+   background-color: #fff;
+   border-radius: 5px;
+   padding: 1%;
+   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+   text-align: center;
+   margin: 2%;
+   transition: background-color 0.3s;
+ }
+ 
+ .appbar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: #f7d736;
+   padding: 10px;
+   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+   transition: background-color 0.3s;
+ }
+ .esquerda {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   width: 50%;
+ }
+ .logo {
+   width: 100px; /* Defina a largura desejada para a imagem */
+   margin-right: 1%;
+ }
+ 
+ .subtitle {
+   font-size: 14px;
+ }
+ 
+ .card-title {
+   font-family: 'Permanent Marker', cursive;
+   font-weight: bold;
+   padding-bottom: 2%;
+ }
+ 
+ .card-content {
+   font-family: 'Permanent Marker', cursive;
+   font-weight: lighter;
+ }
+ 
+ .cor {
+   color: #2c2c2c;
+ }
+ 
+ 
+ input[type="text"],
+ textarea {
+   border: none;
+   background-color: #fff;
+   padding: 0.5%;
+   width: 100%;
+   margin-bottom: 5px;
+   font-family: "Roboto", sans-serif;
+ }
+ 
+ .form-card-title {
+   font-size: 18px;
+   color: #909090;
+ }
+ 
+ .form-card-title::placeholder {
+   color: #c0c0c0; /* Set your preferred color for the placeholder text */
+ }
+ 
+ /* Style the text content when it's not a placeholder */
+ .form-card-title:not(:placeholder-shown) {
+   color: #000000; /* Set your preferred color for the text content */
+ }
+ 
+ .delete-btn {
+   width: 15px;
+   height: 15px;
+   padding: 0;
+   margin-right: 2px;
+   border-radius: 4px;
+   background: transparent;
+   background-image: url("../img/lixeira.png"); /* Replace with your image path */
+   background-size: cover;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   transition: background-color 0.3s, border-width 0.3s;
+ }
+ 
+ .delete-btn:hover {
+   background-color: rgb(255, 112, 112); /* Change to your desired hover background color */
+   border: 0.5px solid rgb(32, 32, 32); /* Add a border on hover */
+ }
+ 
+ .edit-btn {
+   width: 15px;
+   height: 15px;
+   padding: 0;
+   margin-left: 2px;
+   border-radius: 4px;
+   background: transparent;
+   background-image: url("../img/edit.png"); /* Replace with your image path */
+   background-size: cover;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   transition: background-color 0.3s, border-width 0.3s;
+ }
+ 
+ .edit-btn:hover {
+   background-color: rgb(112, 203, 255); /* Change to your desired hover background color */
+   border: 0.5px solid rgb(112, 203, 255); /* Add a border on hover */
+ }
+ 
+ 
+ .autoresize {
+   font-size: 13px;
+   color: #777;
+   resize: horizontal;
+ }
+ 
+ .autoresize::placeholder {
+   color: #c0c0c0; /* Set your preferred color for the placeholder text */
+ }
+ 
+ /* Style the text content when it's not a placeholder */
+ .autoresize:not(:placeholder-shown) {
+   color: #000000; /* Set your preferred color for the text content */
+ }
+ 
+ .btn {
+   background-color: #f7d736;
+   color: #000;
+   padding: 2%;
+   border: none;
+   border-radius: 3px;
+   cursor: pointer;
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+   transition: background-color 0.3s, border-width 0.3s;
+ }
+ 
+ .btn:hover {
+   background-color: #e5c527; /* Change to your desired hover background color */
+ }
+ 
+ 
+ .plain-link {
+   color: black;
+   text-decoration: none;
+ }
+ 
+ 
+ .btn2 {
+   background-color: #dbdbdb;
+   padding: 2%;
+   border: none;
+   margin-top: 1.2%;
+   border-radius: 3px;
+   cursor: pointer;
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+   color: black;
+   text-decoration: none;
+   font-size: 13px;
+   font-family: "Roboto", sans-serif;
+   transition: background-color 0.3s, border-width 0.3s;
+ }
+ 
+ .btn2:hover {
+   background-color: #c3c3c3; /* Change to your desired hover background color */
+ }
+ 
+ .card-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+ }
+ 
+ .row{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+ }
+ 
+ .card {
+   padding: 0.6%;
+   width: 200px;
+   border-radius: 5px;
+   box-shadow: -2px 3px 7px rgba(0, 0, 0, 0.4);
+   margin: 10px;
+   overflow: hidden;
+   transition: transform 0.2s;
+   background-color: #ead3a7;
+ }
+ 
+ .card.card:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ /* Add this CSS for the hover effect */
+ 
+ 
+ .card.card-rotation-1 {
+   background-color: #ead3a7;
+   transform: rotate(-5deg);
+ }
+ .card.card.card-rotation-1:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-2 {
+   background-color: #ef89ba;
+   transform: rotate(3deg);
+ }
+ .card.card.card-rotation-2:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-3 {
+   background-color: #ef89ba;
+   transform: rotate(-2deg);
+ }
+ .card.card.card-rotation-3:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-4 {
+   background-color: #fae890;
+   transform: rotate(-4deg);
+ }
+ .card.card.card-rotation-4:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-5 {
+   background-color: #abe9c1;
+   transform: rotate(2deg);
+ 
+ }
+ .card.card.card-rotation-5:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-6 {
+   background-color: #ead3a7;
+   transform: rotate(-1deg);
+ 
+ }
+ .card.card.card-rotation-6:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ 
+ .card.card-rotation-7 {
+   background-color: #9de0f5;
+   transform: rotate(4deg);
+ }
+ .card.card.card-rotation-7:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-8 {
+   background-color: #abe9c1;
+   transform: rotate(-3deg);
+ 
+ }
+ .card.card.card-rotation-8:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-9 {
+   background-color: #9de0f5;
+   transform: rotate(5deg);
+ }
+ .card.card.card-rotation-9:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ .card.card-rotation-10 {
+   background-color: #fae890;
+   transform: rotate(1deg);
+ }
+ .card.card.card-rotation-10:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+ }
+ 
+ 
+ .tag-highlight {
+   font-size: 12px; /* Tamanho de fonte menor */
+   padding: 1%;
+   border-radius: 3px; /* Adiciona um raio de 3 pixels às bordas */
+   display: inline-block; /* Faz a tag ocupar apenas o espaço necessário */
+   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+ }
+ 
+ .tag-heading {
+   font-size: 22px;
+   text-align: center;
+   padding: 1.5%;
+   margin-top: 2%;
+   font-family: 'Roboto', sans-serif;
+   background-color: #ffe876;
+   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+   display: inline-block; /* Faz a tag ocupar apenas o espaço necessário */
+   border-radius: 10px; /* Adiciona um raio de 3 pixels às bordas */
+ }
+ 
+ .note-title {
+   background-color: #ffe876;
+   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+   display: inline-block; /* Faz a tag ocupar apenas o espaço necessário */
+   border-radius: 10px; /* Adiciona um raio de 3 pixels às bordas */
+   font-family: 'Permanent Marker', cursive;
+   font-size: 22px;
+   margin-bottom: 1%;
+   padding: 1.5%;
+ }
+ 
+ .note-content {
+   font-family: 'Permanent Marker', cursive;
+   font-size: 18px;
+   margin-left: 3%;
+   margin-top: 0%;
+   margin-bottom: 5%;
+ }
+ 
+ .no-notes {
+   font-family: 'Roboto', sans-serif;
+ }
+ 
+ .tags {
+   background-color: #ffe876;
+   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+   display: inline-block; /* Faz a tag ocupar apenas o espaço necessário */
+   border-radius: 10px; /* Adiciona um raio de 3 pixels às bordas */
+   font-family: 'Permanent Marker', cursive;
+   font-size: 16px; /* Aumenta o tamanho da fonte */
+   color: black; /* Define a cor do texto como preto */
+   text-decoration: none; /* Remove o sublinhado dos links */
+   padding: 10px 20px; /* Aumenta o espaçamento interno horizontal para aumentar o tamanho */
+   margin-bottom: 20px; /* Aumenta o espaço inferior entre os itens */
+   margin-top: 20px; /* Aumenta o espaço superior entre os itens */
+ }
+ 
+ .tags:hover {
+   transform: scale(1.15); /* Enlarge the card by 5% */
+   transition: transform 0.3s; /* Adiciona uma transição suave de cor de fundo */
+ }
+ 
+ .tag-list-btn {
+   width: 40px;
+   height: 40px;
+   margin: 2px;
+   border-radius: 4px;
+   background: transparent;
+   background-color: #f7d736;
+   background-image: url("../img/list.png"); /* Replace with your image path */
+   background-size: cover;
+   padding: 0;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   justify-content: flex-end; /* This property aligns the button to the right */
+   transition: background-color 0.3s, border-width 0.3s;
+   border: 3px solid black; /* Adding the border here */
+ }
+ 
+ .tag-list-btn:hover {
+   border: 2px solid rgb(32, 32, 32); /* Add a border on hover */
+ }
+ 
+ .btn3 {
+   background-color: #f7d736;
+   padding: 1%;
+   border: none;
+   margin-top: 1.2%;
+   border-radius: 10px;
+   cursor: pointer;
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+   color: black;
+   text-decoration: none;
+   font-size: 14px;
+   font-family: "Roboto", sans-serif;
+   font-weight: bold;
+   transition: background-color 0.3s, border-width 0.3s;
+ }
+ 
+ .btn3:hover {
+   background-color: #d5b725; /* Change to your desired hover background color */
+ }
+ 
+ /* Estilo base para sugestões de tag */
+ .tag-suggestion {
+   padding: 1% 2%;
+   margin: 2%;
+   color: black;
+   border-radius: 10px;
+   background-color: #f7d736;
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+   font-family: 'Permanent Marker', cursive;
+   transition: transform 0.3s;
+ }
+ 
+ .tag-suggestion:hover {
+   transform: scale(1.05); /* Enlarge the card by 5% */
+   background-color: #d5b725; /* Change to your desired hover background color */
+ }

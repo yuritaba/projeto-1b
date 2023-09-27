@@ -1,0 +1,25 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <div class="esquerda">
+  <a href="/">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" /></a>
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span></div>
+</div>
+
+<main class="container">
+  <h2 class="tag-heading">Lista de Tags</h2>
+  <ul style="display: flex; flex-direction: column; align-items: center;">
+    {% for tag in tags %}
+      <li>
+        {% if tag and tag.name %}
+        <a href="{% url 'tag_detail' tag.name %}" class="tags" style="background-color: {{ tag.color }};">{{ tag.name }}</a></li>
+        {% endif %}
+
+    {% endfor %}
+  </ul>
+  <a href="/" class="btn3">Voltar</a>
+</main>
+{% endblock %}
