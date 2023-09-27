@@ -29,9 +29,9 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-
+        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-
+      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
@@ -39,6 +39,7 @@ jobs:
           path: |
             . 
             !venv/
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -52,11 +53,11 @@ jobs:
         with:
           name: python-app
           path: .
-
+          
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'yuritabacofgetit2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2B6F78D76028416B8F6E828FD7BC1743 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1AF62A67CC394CDCA3B5DF4E7B51EF44 }}
